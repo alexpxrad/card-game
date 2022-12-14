@@ -8,6 +8,10 @@ const cardObjectDefinitions = [
 ]
 
 
+const cardBackImgPath = '/images/card-BackCard.png/'
+
+const cardContainerElem = document.querySelector('.card-container')
+
 
 {/* <div class="card">
 <div class="card-inner">
@@ -48,6 +52,34 @@ function createCard(cardItem) {
     addClassToElement(cardBackElem, 'card-back')
 
     //add src attribute and appropriate value to img element - back of card
+    addSrcToImageElem(cardBackElem)
+
+    //add src attribute and appropriate vaue to img element - front of card
+    addSrcToImageElem(cardFrontElem, cardItem.imagePath)
+
+    //assign class to back image element of back of card
+    addClassToElement(cardBackElem, 'card-img')
+
+     //assign class to front image element of front  of card
+     addClassToElement(cardFrontElem, 'card-img')
+
+     //add front image element as child element to front card element
+    addChildElement(cardFrontElem, cardFrontImg)
+
+    //add back image element as child element to back card element
+    addChildElement(cardBackElem, cardBackImg)
+
+    //add front card element as child element to inner card element
+    addChildElement(cardInnerElem, cardFrontElem)
+
+    //add back card element as child element to inner card element
+    addChildElement(cardInnerElem, cardBackElem)
+
+    //add inner card element as child element to card element
+    addChildElement(cardElem, cardInnerElem)
+
+
+
 
 
 }
@@ -62,4 +94,12 @@ function addClassToElement(elem, className)  {
 
 function addIdToElement(elem, id) {
     elem.id = id
+}
+
+function addSrcToImageElem(imgElem, src) {
+    imgElem.src = src
+}
+
+function addChildElement(parentElem, childElem) {
+    parentElem.appendChild(childElem)
 }
